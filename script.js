@@ -221,8 +221,109 @@ var myDog = {
 	"tails": 1,
 	"best friends": ["Bumba", "Pampers"]
 };
+myDog.bark = "hau-hau";
+delete myDog.bark;
 
 var dogName = myDog.name;
 console.log(dogName);
 var dogFriends = myDog["best friends"];
 console.log(JSON.stringify(dogFriends));
+
+function checkObj(checkProp) {
+	if (myDog.hasOwnProperty(checkProp)) {
+		return myDog[checkProp];
+	} else {
+		return "Not Found";
+	}
+	return "Change me!";
+}
+
+console.log(checkObj("name"));
+
+// Complex Objects
+var myMusic = [
+	{
+	"artist": "Yes",
+	"title": "Tales from Topographic Oceans",
+	"release_year": 1973,
+	"formats": [
+		"CD",
+		"8T",
+		"LP"
+	],
+	"gold": false
+	},
+	{
+	"artist": "Pink Floyd",
+	"title": "Dark Side of the Moon",
+	"release_year": 1973,
+	"formats": [
+		"CD",
+		"8T",
+		"LP"
+	],
+	"gold": true
+	}
+]
+
+var secondFormat = myMusic[1].formats[1];
+console.log(secondFormat);
+
+var collection = {
+	"2548" : {
+		"artist": "Yes",
+		"title": "Tales from Topographic Oceans",
+		"release_year": 1973,
+		"tracks": [
+			"The Revealing Science of God",
+			"The Remembering",
+			"The Ancient"
+		]
+	},
+	"2468" : {
+		"artist": "Pink Floyd",
+		"title": "Dark Side of the Moon",
+		"release_year": 1973,
+		"tracks": [
+			"Breath",
+			"Time",
+			"Money"
+		]
+	},
+	"2439": {
+		"album": "Speaking in Tongues"
+	}
+};
+
+var collectionCopy = JSON.parse(JSON.stringify(collection));
+
+function updateRecords(id, prop, value) {
+	if (value === "") {
+		delete collection[id][prop];
+	} else if (prop === "tracks") {
+		collection[id][prop] = collection[id][prop] || [];
+		collection[id][prop].push(value);
+	} else {
+		collection[id][prop] = value;
+	}
+	return collection;
+}
+updateRecords(2439, "tracks", "Moon Rocks");
+console.log(updateRecords(2439, "artist", "Talking Heads"));
+
+// While loops
+var i = 1;
+var myArrayUsedInWhileLoop = [];
+while(i < 6) {
+	myArrayUsedInWhileLoop.push(i);
+	i++;
+}
+console.log(myArrayUsedInWhileLoop);
+
+
+// For loops
+var myArrayUsedInForLoop = [];
+for (var i = 0; i < 10; i += 2) {
+	myArrayUsedInForLoop.push(i);
+}
+console.log(myArrayUsedInForLoop);
