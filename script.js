@@ -327,3 +327,38 @@ for (var i = 0; i < 10; i += 2) {
 	myArrayUsedInForLoop.push(i);
 }
 console.log(myArrayUsedInForLoop);
+
+// Iteration through array
+var myTotal = 0;
+for (var i=0; i < myArrayUsedInForLoop.length; i++) {
+	myTotal += myArrayUsedInForLoop[i];
+}
+console.log(myTotal);
+
+// multi-dimensional arrays (iteration, loops)
+function multiplyAll(arr) {
+	var product = 1;
+	
+	for (var i=0; i < arr.length; i++) {
+		for (var j=0; j<arr[i].length; j++) {
+			product *= arr[i][j];
+		}
+	}
+	
+	return product;
+}
+
+var product = multiplyAll([[1, 2], [3,4], [5,6,7]]);
+
+console.log(product);
+
+// Do while loops
+var thisArray = [];
+var it = 10;
+
+do {
+	thisArray.push(i);
+	it++;
+} while (it < 5)
+	
+console.log(it, thisArray);
