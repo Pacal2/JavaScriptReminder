@@ -362,3 +362,168 @@ do {
 } while (it < 5)
 	
 console.log(it, thisArray);
+
+// Profile lookup
+
+var contacts = [
+	{
+		"firstName": "Thomas",
+		"lastName": "Pynchon",
+		"number": "88585858",
+		"works": ["Gravit's Rainbow", "The Crying of Lot 40", "V."]
+	},
+	{
+		"firstName": "Masaaki",
+		"lastName": "Yuasa",
+		"number": "88585859",
+		"works": ["Kaiba", "Tatami Galaxy", "Mind Game"]
+	},
+	{
+		"firstName": "Alejandro",
+		"lastName": "Jodorowsky",
+		"number": "88585860",
+		"works": ["Incal", "Metabarons", "El Topo"]
+	},
+	{
+		"firstName": "Terry",
+		"lastName": "Gilliam",
+		"number": "88585861",
+		"works": ["Brazil", "12 Monkeys", "Fear and Loathing in Las Vegas"]
+	},
+	{
+		"firstName": "Olivier",
+		"lastName": "Ledroit",
+		"number": "88585862",
+		"works": ["Vampire Requiem Chevalier", "Wika", "Black Moong Chronicles"]
+	},
+	{
+		"firstName": "Christopher",
+		"lastName": "Avellone",
+		"number": "88585863",
+		"works": ["Planescape: Torment", "Fallout 2", "KOTOR II: The Sith Lords"]
+	}
+
+];
+
+function lookUpProfile(name, prop) {
+	for (var i = 0; i < contacts.length; i++) {
+		if(contacts[i].firstName === name) {
+			return contacts[i][prop] || "No such property";
+		}
+	}
+	
+	return "No such contact";
+}
+
+var profileData = lookUpProfile("Thomas", "works");
+console.log(profileData);
+
+var nonExistantProfileData = lookUpProfile("Thomas", "address");
+console.log(nonExistantProfileData);
+
+// Random numbers
+
+console.log(Math.floor(Math.random()*10));
+
+function randomRange(minRandom, maxRandom) {
+	return Math.floor(Math.random() * (maxRandom - minRandom + 1)) + minRandom;
+}
+console.log(randomRange(26, 48));
+
+// Parsing to int
+var stringNumberA = "16";
+var stringNumberB = "12";
+console.log(stringNumberA+stringNumberB);
+var stringNumberA = parseInt(stringNumberA);
+var stringNumberB = parseInt(stringNumberB);
+console.log(stringNumberA+stringNumberB);
+
+// Converting from one base to another
+var binaryNumber = "10101";
+console.log(parseInt(binaryNumber, 2));
+
+// Conditional operater (used instead of if else)
+// condition ? statement-if-true : statement-if-false;
+function checkIfEqual(a, b) {
+	return a === b ? true : false;
+}
+
+console.log(checkIfEqual(1, 2));
+console.log(checkIfEqual(2, 2));
+
+// Nested conditional operators
+function checkIfPositiveZeroOrNegative(num){
+	return num > 0 ? "positive" : (num < 0 ? "negative" : "zero");
+}
+
+console.log(checkIfPositiveZeroOrNegative(-2));
+console.log(checkIfPositiveZeroOrNegative(0));
+console.log(checkIfPositiveZeroOrNegative(4));
+
+// let - can't declare the variable two times
+// const - can't reassign value
+
+// Mutating a const array
+const s = [5, 7, 2]
+function editInPlace() {
+	"use strict";
+	
+	//s = [2, 5, 7];
+	s[0] = 2
+	s[1] = 6;
+	s[2] = 7;
+}
+editInPlace();
+console.log(s);
+
+// Prevent object mutation
+function freezeObj() {
+	"use strict";
+	const MATH_CONSTANTS = {
+		PI: 3.14
+	};
+	
+	Object.freeze(MATH_CONSTANTS);
+	
+	try {
+		MATH_CONSTANTS.PI = 99
+	} catch( ex ) {
+		console.log(ex);
+	}
+	return MATH_CONSTANTS.PI;
+}
+const PI = freezeObj();
+console.log(PI);
+
+// Arrow functions
+const arrowFunction = () => new Date();
+
+// Arrow functions with Parameters
+const myConcat = (arr1, arr2) => arr1.concat(arr2);
+console.log(myConcat([1, 2], [3, 4, 5]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
