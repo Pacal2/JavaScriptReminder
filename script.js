@@ -1,3 +1,6 @@
+import { capitalizeString } from "./string_function.js"
+
+
 // Data Types:
 // You can use through whole program
 var myName = "Jacek";
@@ -633,3 +636,119 @@ console.log(stats);
 console.log(half(stats));
 
 // Template literals
+const person = {
+	name: "Paul Atreides",
+	age: 24
+};
+
+const greeting = `Hello, my name is ${person.name}! 
+I am ${person.age} years old.`;
+
+console.log(greeting);
+
+const resultForTempList = {
+	success: ["max-length", "no-amd", "prefer-arrow-functions"],
+	failure: ["no-var", "var-on-top", "linebreak"],
+	skipped: ["id-blacklist", "no-dup-keys"]
+}
+
+function makeListforTemLit(arr) {
+	const resultDisplayArray = [];
+	
+	for (let i = 0; i <arr.length; i++) {
+		resultDisplayArray.push(`<li class="text-warning">${arr[i]}</li>`);
+	}
+	
+	return resultDisplayArray;
+}
+
+const resultDisplayArray = makeListforTemLit(resultForTempList.failure);
+console.log(resultDisplayArray);
+
+// Object literal declarations using simple fields
+const createPerson = (name, age, gender) => ({name, age, gender});
+
+console.log(createPerson("Paul Atreides", 24, "male"));
+
+// Concise declarative dunctions
+const bicycle = {
+	gear: 2,
+	setGear(newGear) {
+		"use strict";
+		this.gear = newGear;
+	}
+}
+
+bicycle.setGear(3);
+console.log(bicycle.gear);
+
+// Class Syntax for Constructer functions
+class spaceShuttle {
+	constructor(targetPlanet) {
+		this.targetPlanet = targetPlanet;
+	}
+}
+
+var zeus = new spaceShuttle("Jupiter");
+console.log(zeus.targetPlanet);
+
+// Using getters and setters to Control Access to an Object
+class  Book {
+	constructor(author) {
+		this._author = author;
+	}
+	// getter
+	get writer(){
+		return this._author;
+	}
+	// setter
+	set writer(updatedAuthor){
+		this._author = updatedAuthor;
+	}
+}
+
+function makeClass() {
+	class Thermostat {
+		constructor(temp) {
+			// Farenheit  to Celcius
+			this._temp = 5/9 * (temp -32);
+		}
+		get temperature() {
+			return this._temp;
+		}
+		set temperature(updatedTemp) {
+			this._temp = updatedTemp;
+		}
+	}
+	
+	return Thermostat;
+}
+
+const Thermostat = makeClass();
+const thermos = new Thermostat(76);
+let temp = thermos.temperature;
+thermos.temperature = 26;
+temp = thermos.temperature;
+console.log(temp);
+
+// Differences between import and require
+
+const cap = capitalizeString("hello!");
+console.log(cap);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
