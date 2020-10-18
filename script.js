@@ -1,6 +1,3 @@
-import { capitalizeString } from "./string_function.js"
-
-
 // Data Types:
 // You can use through whole program
 var myName = "Jacek";
@@ -732,21 +729,20 @@ temp = thermos.temperature;
 console.log(temp);
 
 // Differences between import and require
-
-const cap = capitalizeString("hello!");
-console.log(cap);
+// import { capitalizeString } from "./string_function.js"
 
 
+// const cap = capitalizeString("hello!");
+// console.log(cap);
 
+// Testing node.js
+console.log(global.temp);
 
+//console.log(module);
 
+const log = require('./logger');
 
-
-
-
-
-
-
+log.log('message');
 
 
 
