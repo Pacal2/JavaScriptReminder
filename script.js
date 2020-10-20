@@ -729,22 +729,45 @@ temp = thermos.temperature;
 console.log(temp);
 
 // Differences between import and require
-// import { capitalizeString } from "./string_function.js"
+const stringFunction = require('./string_function');
 
+const capString = stringFunction.capitalizeString("hello!");
+console.log(capString);
 
-// const cap = capitalizeString("hello!");
-// console.log(cap);
 
 // Testing node.js
 console.log(global.temp);
 
 //console.log(module);
 
-const log = require('./logger');
+const logger = require('./logger');
 
-log.log('message');
+logger.log('message');
 
+// Built-in modules: Paths
+const path = require('path');
 
+var pathObj = path.parse(__filename);
 
+console.log(pathObj);
 
+// Built-in modules: Operating System
+const os = require('os');
 
+var totalMemory = os.totalmem();
+var freeMemory = os.freemem();
+
+console.log('Total memory: ' + totalMemory);
+console.log(`Total memory: ${freeMemory}`); 
+
+// Build in modules: File System
+const fs = require('fs');
+
+//const files = fs.readdirSync('./');
+///console.log(files);
+
+fs.readdir('./', function(err, files) {
+	if (err) console.log('Error', err);
+	else console.log('Result', files);
+	
+});

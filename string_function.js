@@ -1,1 +1,6 @@
-export const capitalizeString = str = str.toUpperCase();
+//export 
+function capitalizeString(str) {
+		return str.toUpperCase();
+}
+
+module.exports.capitalizeString = capitalizeString;
