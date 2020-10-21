@@ -771,3 +771,17 @@ fs.readdir('./', function(err, files) {
 	else console.log('Result', files);
 	
 });
+
+// Build in modules: Event
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+// Register a Listener
+emitter.on('messageLogged', (arg) => {
+	console.log('Listener called', arg);
+});
+
+// Raise an event
+emitter.emit('messageLogged', {id: 1, url: 'http://'});
+
+// Raise: logging (data: message)
