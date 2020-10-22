@@ -739,19 +739,17 @@ console.log(capString);
 console.log(global.temp);
 
 //console.log(module);
+//const logger = require('./logger');
+//logger.log('message');
 
-const logger = require('./logger');
-
-logger.log('message');
-
-// Built-in modules: Paths
+// Path module
 const path = require('path');
 
 var pathObj = path.parse(__filename);
 
 console.log(pathObj);
 
-// Built-in modules: Operating System
+// Operating System module
 const os = require('os');
 
 var totalMemory = os.totalmem();
@@ -760,7 +758,7 @@ var freeMemory = os.freemem();
 console.log('Total memory: ' + totalMemory);
 console.log(`Total memory: ${freeMemory}`); 
 
-// Build in modules: File System
+// File System module
 const fs = require('fs');
 
 //const files = fs.readdirSync('./');
@@ -772,16 +770,43 @@ fs.readdir('./', function(err, files) {
 	
 });
 
-// Build in modules: Event
+// Event module
 const EventEmitter = require('events');
-const emitter = new EventEmitter();
+
+const Logger = require('./logger')
+const logger = new Logger();
 
 // Register a Listener
-emitter.on('messageLogged', (arg) => {
+logger.on('messageLogged', (arg) => {
 	console.log('Listener called', arg);
 });
 
-// Raise an event
-emitter.emit('messageLogged', {id: 1, url: 'http://'});
+logger.log('message');
 
-// Raise: logging (data: message)
+// HTTP module
+const http = require('http');
+
+
+//server.on("connection", (socket) => {
+//	console.log("New connection...");
+//});
+
+const server = http.createServer((req, res) => {
+	if(req.url === '/') {
+		res.write("Hello");
+		res.end();
+	}
+	
+	if(req.url === '/api/courses') {
+		res.write(JSON.stringify([1, 2, 3]));
+		res.end();
+	}
+
+});
+
+
+
+server.listen(3000);
+
+console.log("Listening on port 3000");
+
